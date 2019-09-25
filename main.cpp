@@ -49,16 +49,13 @@ void ordenarI(int arr[],int tam){
     }
 }
 void ordenarR(int arr[],int tam,int index=0){
-    if(tam==1){
+    tam--;
+    cambio(arr[index],arr[tam]);
+    index++;
 
-    }
-    else{
-        tam--;
-        cambio(arr[index],arr[tam]);
-        index++;
-
+    if(tam>1)
         ordenarR(arr,tam,index);
-    }
+
 
 }
 int main()
