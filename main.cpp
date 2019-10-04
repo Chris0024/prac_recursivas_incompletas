@@ -1,70 +1,128 @@
 #include <iostream>
 
 using namespace std;
+
 void cambio(int &a , int &b){
-    int c;
-    c=a;
-    a=b;
-    b=c;
+	int c;
+	c=a;
+	a=b;
+	b=c;
 }
-void imprimirI(int arr[],int tam){
-    for(int i=0;i<tam;i++){
-        cout<<arr[i]<<endl;
-    }
+void burbuja(int arr[],int n){
+	int i,j;
+	for(i=0;i<n-1;i++){
+		for(j=0;j<n-i-1;j++){
+			if(arr[j]>arr[j+1])
+				cambio(arr[j],arr[j+1]);
+		}
+	}
 }
-void imprimirR(int arr[],int tam, int index=0){
 
-    if (tam==index+1){
-        cout<<arr[index]<<endl;
-    }
+void insercion(int arr[],int n){
+	int i, actual,j;
+	for (i = 1; i < n; i++){
+		actual=arr[i];
+		j=i-1;
+		while (j >= 0 && arr[j] > actual){
+			arr[j+1]=arr[j];
+			j--;
+			
+		}
+		arr[j+1]=actual;
+	}
+	
+	
+}
 
-    else{
-        cout<<arr[index]<<endl;
-        index++;
-        imprimirR(arr,tam,index);
-    }
+
+
+int partir(int a[],int inicio,int fin){
+	int ss=a[fin];
+	
+	
+	int indice=inicio;
+	int i;
+	
+	for(i=inicio;i<fin;i++)
+	{
+		if(a[i]<=ss)
+		{
+			cambio(a[i],a[indice]);
+			indice++;
+		}
+	}
+	cambio(a[fin],a[indice]);
+	return indice;
+}
+void Quicksort(int a[],int inicio,int fin)
+{
+	if(inicio<fin){
+		int indice=partir(a,inicio,fin);
+		Quicksort(a,inicio,indice-1);
+		Quicksort(a,indice+1,fin);
+	}
+}
+
+
+
+
+void imprimirI(int *arr,int tam){
+	for(int i=0;i<tam;i++){
+		cout<<*arr++<<'\t';
+	}
+}
+void imprimirR(int *arr,int tam){
+	
+	if (tam==1){
+		cout<<*(arr+--tam)<<'\t';
+	}
+	
+	else{
+		cout<<*arr++<<'\t';
+		
+		imprimirR(arr,--tam);
+	}
 }
 int sumaR(int arr[], int tam,int index=0){
-    if(tam==index+1){
-        return (arr[index]);
-    }
-    else{
-        index++;
-        return (arr[index-1]+sumaR(arr,tam,index));
-    }
+	if(tam==index+1){
+		return (arr[index]);
+	}
+	else{
+		index++;
+		return (arr[index-1]+sumaR(arr,tam,index));
+	}
 }
-int sumaI(int arr[],int tam){
-    int c=0;
-    for(int i=0 ; i< tam; i++){
-        c+=arr[i];
-
-    }
-    return c;
+int sumaI(int *arr,int tam){
+	int c=0;
+	for(int i=0 ; i< tam; i++){
+		c+=*arr++;
+		
+	}
+	return c;
 }
-void ordenarI(int arr[],int tam){
-
-    for(int i=0;i<tam;i++){
-        cambio(arr[i],arr[--tam]);
-
-    }
+void inverI(int *arr,int tam){
+	
+	for(int i=0;i<tam;i++){
+		cambio(*(arr+i),*(arr+--tam));
+		
+	}
 }
-void ordenarR(int *arr,int tam){
-    tam--;
-    cambio(*(arr++),*(arr+tam));
-
-
-    if(tam>1)
-        ordenarR(arr,tam);
-
-
+void inverR(int *arr,int tam){
+	tam--;
+	cambio(*arr++,*(arr+tam));
+	if(tam>1)
+		inverR(arr,--tam);
+	
+	
 }
 int main()
 {
-
-    int x[5]={1,2,3,4,5};
-    //imprimirR(x,5);
-    //cout<<sumaR(x,5);
-    ordenarR(x,5);
-    imprimirI(x,5);
-    return 0;
+	
+	int x[5]={1,2,3,4,5};
+	//imprimirR(x,5);
+	//cout<<sumaR(x,5);
+	inverI(x,5);
+	imprimirI(x,5);
+	return 0;
 }
+// hola we
