@@ -48,13 +48,13 @@ void ordenarI(int arr[],int tam){
 
     }
 }
-void ordenarR(int arr[],int tam,int index=0){
+void ordenarR(int *arr,int tam){
     tam--;
-    cambio(arr[index],arr[tam]);
-    index++;
+    cambio(*(arr++),*(arr+tam));
+
 
     if(tam>1)
-        ordenarR(arr,tam,index);
+        ordenarR(arr,tam);
 
 
 }
