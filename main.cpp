@@ -125,7 +125,7 @@ int main()
     cout<<'\n'<<" burbuja"<<endl;
 
 
-    burbuja(y,8);
+    Quicksort(y,0,8-1);
     imprimirI(y,8);
 
 	return 0;
