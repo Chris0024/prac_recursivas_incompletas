@@ -8,12 +8,13 @@ void cambio(int &a , int &b){
 	a=b;
 	b=c;
 }
-void burbuja(int arr[],int n){
+
+void burbuja(int *arr,int n){
 	int i,j;
 	for(i=0;i<n-1;i++){
 		for(j=0;j<n-i-1;j++){
-			if(arr[j]>arr[j+1])
-				cambio(arr[j],arr[j+1]);
+			if(*(arr+j)>*(arr+j+1))
+				cambio(*(arr+j),*(arr+j+1));
 		}
 	}
 }
@@ -118,11 +119,15 @@ int main()
 {
 
 	int x[5]={1,2,3,4,5};
-	//imprimirR(x,5);
-	//cout<<sumaR(x,5);
-	inverI(x,5);
-	imprimirI(x,5);
-	cout << '\n' <<sumaR(x,5)<<endl;
+	int y[8]={1,5,3,6,9,8,4,6};
+
+    imprimirI(y,8);
+    cout<<'\n'<<" burbuja"<<endl;
+
+
+    burbuja(y,8);
+    imprimirI(y,8);
+
 	return 0;
 }
-// hola we
+
