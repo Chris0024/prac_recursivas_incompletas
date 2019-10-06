@@ -26,23 +26,23 @@ void insercion(int arr[],int n){
 		while (j >= 0 && arr[j] > actual){
 			arr[j+1]=arr[j];
 			j--;
-			
+
 		}
 		arr[j+1]=actual;
 	}
-	
-	
+
+
 }
 
 
 
 int partir(int a[],int inicio,int fin){
 	int ss=a[fin];
-	
-	
+
+
 	int indice=inicio;
 	int i;
-	
+
 	for(i=inicio;i<fin;i++)
 	{
 		if(a[i]<=ss)
@@ -72,23 +72,22 @@ void imprimirI(int *arr,int tam){
 	}
 }
 void imprimirR(int *arr,int tam){
-	
+
 	if (tam==1){
 		cout<<*(arr+--tam)<<'\t';
 	}
-	
+
 	else{
 		cout<<*arr++<<'\t';
-		
+
 		imprimirR(arr,--tam);
 	}
 }
-int sumaR(int arr[], int tam,int index=0){
-	if(tam==index+1){
-		return (arr[index]);
+int sumaR(int *arr, int tam,int index=0){
+	if(tam==1){
+		return (arr);
 	}
 	else{
-		index++;
 		return (arr[index-1]+sumaR(arr,tam,index));
 	}
 }
@@ -96,15 +95,15 @@ int sumaI(int *arr,int tam){
 	int c=0;
 	for(int i=0 ; i< tam; i++){
 		c+=*arr++;
-		
+
 	}
 	return c;
 }
 void inverI(int *arr,int tam){
-	
+
 	for(int i=0;i<tam;i++){
 		cambio(*(arr+i),*(arr+--tam));
-		
+
 	}
 }
 void inverR(int *arr,int tam){
@@ -112,12 +111,12 @@ void inverR(int *arr,int tam){
 	cambio(*arr++,*(arr+tam));
 	if(tam>1)
 		inverR(arr,--tam);
-	
-	
+
+
 }
 int main()
 {
-	
+
 	int x[5]={1,2,3,4,5};
 	//imprimirR(x,5);
 	//cout<<sumaR(x,5);
