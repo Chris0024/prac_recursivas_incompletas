@@ -83,12 +83,12 @@ void imprimirR(int *arr,int tam){
 		imprimirR(arr,--tam);
 	}
 }
-int sumaR(int *arr, int tam,int index=0){
+int sumaR(int *arr, int tam){
 	if(tam==1){
-		return (arr);
+		return *arr;
 	}
 	else{
-		return (arr[index-1]+sumaR(arr,tam,index));
+		return *arr + sumaR(++arr,--tam);
 	}
 }
 int sumaI(int *arr,int tam){
@@ -122,6 +122,7 @@ int main()
 	//cout<<sumaR(x,5);
 	inverI(x,5);
 	imprimirI(x,5);
+	cout << '\n' <<sumaR(x,5)<<endl;
 	return 0;
 }
 // hola we
