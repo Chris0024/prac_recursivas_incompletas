@@ -19,17 +19,16 @@ void burbuja(int *arr,int n){
 	}
 }
 
-void insercion(int arr[],int n){
+void insercion(int *arr,int n){
 	int i, actual,j;
 	for (i = 1; i < n; i++){
-		actual=arr[i];
+		actual=*(arr+i);
 		j=i-1;
-		while (j >= 0 && arr[j] > actual){
-			arr[j+1]=arr[j];
+		while (j >= 0 && *(arr+j) > actual){
+			*(arr+j+1)=*(arr+j);
 			j--;
-
 		}
-		arr[j+1]=actual;
+		*(arr+j+1)=actual;
 	}
 
 
