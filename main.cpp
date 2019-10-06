@@ -37,8 +37,8 @@ void insercion(int arr[],int n){
 
 
 
-int partir(int a[],int inicio,int fin){
-	int ss=a[fin];
+int partir(int *a,int inicio,int fin){
+	int ss=*(a+fin);
 
 
 	int indice=inicio;
@@ -46,16 +46,16 @@ int partir(int a[],int inicio,int fin){
 
 	for(i=inicio;i<fin;i++)
 	{
-		if(a[i]<=ss)
+		if(*(a+i)<=ss)
 		{
-			cambio(a[i],a[indice]);
+			cambio(*(a+i),*(a+indice));
 			indice++;
 		}
 	}
-	cambio(a[fin],a[indice]);
+	cambio(*(a+fin),*(a+indice));
 	return indice;
 }
-void Quicksort(int a[],int inicio,int fin)
+void Quicksort(int *a,int inicio,int fin)
 {
 	if(inicio<fin){
 		int indice=partir(a,inicio,fin);
@@ -124,8 +124,7 @@ int main()
     imprimirI(y,8);
     cout<<'\n'<<" burbuja"<<endl;
 
-
-    Quicksort(y,0,8-1);
+    insercion(y,8);
     imprimirI(y,8);
 
 	return 0;
