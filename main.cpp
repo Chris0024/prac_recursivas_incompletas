@@ -123,7 +123,7 @@ int main()
     imprimirI(y,8);
     cout<<'\n'<<" burbuja"<<endl;
 
-    insercion(y,8);
+    burbuja(y,8);
     imprimirI(y,8);
 
 	return 0;
