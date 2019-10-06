@@ -1,7 +1,7 @@
 #include <iostream>
 
 using namespace std;
-
+//ahora si estan completas
 void cambio(int &a , int &b){
 	int c;
 	c=a;
